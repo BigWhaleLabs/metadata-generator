@@ -14,7 +14,7 @@ import renderReact from '@/helpers/renderReact'
 @Controller('/')
 export default class LoginController {
   @Get('/image/:tokenAddress/:tokenId')
-  async test(@Ctx() ctx: Context, @Params() params: Metadata) {
+  async image(@Ctx() ctx: Context, @Params() params: Metadata) {
     const { tokenAddress, tokenId } = params
 
     const contract = new ethers.Contract(

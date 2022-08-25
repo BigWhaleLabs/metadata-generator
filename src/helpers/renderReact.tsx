@@ -30,10 +30,10 @@ const baseQrConfig = {
 export default function (
   tokenAddress: string,
   tokenId: string,
-  tokenName: string
+  derivativeName: string
 ) {
   const html = ReactDOMServer.renderToStaticMarkup(
-    <Badge tokenName={tokenName} />
+    <Badge derivativeName={derivativeName} />
   )
   const config = {
     ...baseQrConfig,

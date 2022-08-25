@@ -6,7 +6,7 @@ import {
 import { goerliProvider } from '@/helpers/providers'
 import data from '@/data'
 
-export default function getLedgerContracts() {
+export default function () {
   return Object.entries(data).reduce(
     (prev, [name, { ledger }]) => ({
       ...prev,

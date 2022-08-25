@@ -2,7 +2,7 @@ import React from 'react'
 import SCLogo from '@/components/icons/SCLogo'
 import SealCredLogoText from '@/components/icons/SealCredLogoText'
 
-export default function CornertLogo() {
+export default function () {
   return (
     <div
       style={{

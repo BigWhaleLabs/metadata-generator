@@ -6,6 +6,7 @@ import Metadata from '@/validators/Metadata'
 import Network from '@/models/Network'
 import abiForName from '@/helpers/contracts/abiForName'
 import data from '@/data'
+import env from '@/helpers/env'
 import getBadge from '@/helpers/getBadge'
 import nodeHtmlToImage from 'node-html-to-image'
 import renderReact from '@/helpers/renderReact'
@@ -56,7 +57,7 @@ export default class LoginController {
     return {
       description: data[badge.type].ownerContent(await originalContract.name()),
       external_url: 'https://sealcred.xyz',
-      image: `http://localhost:1337/image/${tokenAddress}/${tokenId}`,
+      image: `${env.DOMAIN}/${tokenAddress}/${tokenId}`,
       name,
     }
   }

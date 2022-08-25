@@ -57,7 +57,7 @@ export default class LoginController {
     return {
       description: data[badge.type].ownerContent(await originalContract.name()),
       external_url: 'https://sealcred.xyz',
-      image: `${env.DOMAIN}/${tokenAddress}/${tokenId}`,
+      image: `${env.METADATA_GENERATOR}/${tokenAddress}/${tokenId}`,
       name,
     }
   }

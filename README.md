@@ -13,9 +13,9 @@ And you should be good to go! Feel free to fork and submit pull requests.
 
 ## Environment variables
 
-| Name     | Description                                         |
-| -------- | --------------------------------------------------- |
-| `PORT`   | Port to run server on (defaults to 1337)            |
-| `DOMAIN` | Domain of server where metadata generator is hosted |
+| Name                 | Description                                      |
+| -------------------- | ------------------------------------------------ |
+| `PORT`               | Port to run server on (defaults to 1337)         |
+| `METADATA_GENERATOR` | Metadata generator server urlgenerator is hosted |
 
 Also, please, consider looking at `.env.sample`.

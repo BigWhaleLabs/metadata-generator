@@ -15,19 +15,28 @@
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src"
   },
   "dependencies": {
+    "@big-whale-labs/constants": "^0.1.22",
+    "@big-whale-labs/stores": "^0.1.16",
     "@hapi/boom": "^10.0.0",
     "@koa/cors": "^3.4.1",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
     "amala": "^8.0.2",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "envalid": "^7.3.1",
+    "ethers": "^5.7.0",
     "facebook-node-sdk": "^0.2.0",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^12.0.0",
     "lodash": "^4.17.21",
-    "mongoose": "^6.5.2"
+    "mongoose": "^6.5.2",
+    "node-html-to-image": "^3.2.4",
+    "qr-code-styling": "^1.6.0-rc.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@typegoose/typegoose": "^9.11.0",

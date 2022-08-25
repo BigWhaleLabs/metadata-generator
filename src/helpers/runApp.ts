@@ -1,10 +1,10 @@
-import * as Koa from 'koa'
-import * as Router from 'koa-router'
-import * as bodyParser from 'koa-bodyparser'
-import * as cors from '@koa/cors'
 import { Server } from 'http'
 import { bootstrapControllers } from 'amala'
 import { resolve } from 'path'
+import Koa from 'koa'
+import Router from 'koa-router'
+import bodyParser from 'koa-bodyparser'
+import cors from '@koa/cors'
 import env from '@/helpers/env'
 
 const app = new Koa()

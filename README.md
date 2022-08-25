@@ -1,10 +1,10 @@
-# Backend starter code
+# Metadata Generator code
 
-This repository is to be used as a starter for Koa based Node.js applications written in TypeScript and using MongoDB. It includes a range of nice packages and configurations. It also has a stub for user login via Telegram, Facebook and Google. Enjoy!
+This repistory is used to be metadata generator for derivatives on selcred.xyz
 
 ## Installation and local launch
 
-1. Clone this repo: `git clone https://github.com/Borodutch/backend-starter`
+1. Clone this repo: `git clone https://github.com/BigWhaleLabs/metadata-generator`
 2. Create `.env` with the environment variables listed below
 3. Run `yarn` in the root folder
 4. Run `yarn start`

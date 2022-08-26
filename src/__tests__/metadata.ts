@@ -1,7 +1,5 @@
 import { Server } from 'http'
-import { ethers } from 'ethers'
 import { goerliProvider } from '@/helpers/providers'
-import abiForName from '@/helpers/contracts/abiForName'
 import data from '@/data'
 import env from '@/helpers/env'
 import getBadge from '@/helpers/getBadge'

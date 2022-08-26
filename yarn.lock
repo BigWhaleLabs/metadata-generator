@@ -669,30 +669,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/constants@npm:^0.1.19, @big-whale-labs/constants@npm:^0.1.22":
+"@big-whale-labs/constants@npm:^0.1.22":
   version: 0.1.22
   resolution: "@big-whale-labs/constants@npm:0.1.22"
   checksum: e22643d888336ae0e4a2eded767b21bd482a096345899dbceefc6895cd3d1338f88338819acbc505e52eb29a7ab49fc16444362a5ea58da8d87d0079c814883b
-  languageName: node
-  linkType: hard
-
-"@big-whale-labs/seal-cred-ledger-contract@npm:^0.2.6":
-  version: 0.2.6
-  resolution: "@big-whale-labs/seal-cred-ledger-contract@npm:0.2.6"
-  checksum: b93e75d70ba522fe41fb64b838ff368ce32e58b71eac55b21c3f33887a11fcaf46d55cfbc42c5b79d4653a6833645247dde0e7f094a818d2d3e5064548ea9494
-  languageName: node
-  linkType: hard
-
-"@big-whale-labs/stores@npm:^0.1.16":
-  version: 0.1.16
-  resolution: "@big-whale-labs/stores@npm:0.1.16"
-  dependencies:
-    "@big-whale-labs/constants": ^0.1.19
-    "@big-whale-labs/seal-cred-ledger-contract": ^0.2.6
-    ethers: ^5.6.9
-    secure-ls: ^1.2.6
-    valtio: ^1.6.3
-  checksum: bc99157b4b5880f0e63e00c55bb13374624a8b847389d77d172a122f4b553fde9a06be997c47c7d075202755d0d15b6f073d12b6b3ab397cd38318abdd04221f
   languageName: node
   linkType: hard
 
@@ -3014,13 +2994,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"crypto-js@npm:^3.1.6":
-  version: 3.3.0
-  resolution: "crypto-js@npm:3.3.0"
-  checksum: 193923143a4784b2f974366068d96fe8280168fd3fef2bfea9551a5c3e32096f5a8fa49ff4eeb5bd0b9716d325618d38cfbe6125e359a4ef488fbca93e600824
-  languageName: node
-  linkType: hard
-
 "csstype@npm:^3.0.2":
   version: 3.1.0
   resolution: "csstype@npm:3.1.0"
@@ -3689,7 +3662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethers@npm:^5.6.9, ethers@npm:^5.7.0":
+"ethers@npm:^5.7.0":
   version: 5.7.0
   resolution: "ethers@npm:5.7.0"
   dependencies:
@@ -5634,15 +5607,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lz-string@npm:^1.4.4":
-  version: 1.4.4
-  resolution: "lz-string@npm:1.4.4"
-  bin:
-    lz-string: bin/bin.js
-  checksum: 54e31238a61a84d8f664d9860a9fba7310c5b97a52c444f80543069bc084815eff40b8d4474ae1d93992fdf6c252dca37cf27f6adbeb4dbc3df2f3ac773d0e61
-  languageName: node
-  linkType: hard
-
 "make-dir@npm:^3.0.0":
   version: 3.1.0
   resolution: "make-dir@npm:3.1.0"
@@ -5725,7 +5689,6 @@ __metadata:
   resolution: "metadata-generator@workspace:."
   dependencies:
     "@big-whale-labs/constants": ^0.1.22
-    "@big-whale-labs/stores": ^0.1.16
     "@koa/cors": ^3.4.1
     "@typegoose/typegoose": ^9.11.0
     "@types/jest": ^28.1.8
@@ -6502,13 +6465,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"proxy-compare@npm:2.3.0":
-  version: 2.3.0
-  resolution: "proxy-compare@npm:2.3.0"
-  checksum: 7136ec8ee7da839e67db91183858cf4c19e4bea5ca72235c0e18b30ad0230198d71f0643c595458479f5ea466be4573b37d627f0b8c1ab2dc53161e9ad7c58e7
-  languageName: node
-  linkType: hard
-
 "proxy-from-env@npm:1.1.0":
   version: 1.1.0
   resolution: "proxy-from-env@npm:1.1.0"
@@ -6839,16 +6795,6 @@ __metadata:
   version: 3.0.1
   resolution: "scrypt-js@npm:3.0.1"
   checksum: b7c7d1a68d6ca946f2fbb0778e0c4ec63c65501b54023b2af7d7e9f48fdb6c6580d6f7675cd53bda5944c5ebc057560d5a6365079752546865defb3b79dea454
-  languageName: node
-  linkType: hard
-
-"secure-ls@npm:^1.2.6":
-  version: 1.2.6
-  resolution: "secure-ls@npm:1.2.6"
-  dependencies:
-    crypto-js: ^3.1.6
-    lz-string: ^1.4.4
-  checksum: a931fd5e80024fa5f8eb2224f6f98b057f696645587d9a6592502a59e5eb1ca9864375e612739b82cb7f48132e1a5236641dcebf3dad2632922e6a54df5cead6
   languageName: node
   linkType: hard
 
@@ -7606,15 +7552,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.2.0":
-  version: 1.2.0
-  resolution: "use-sync-external-store@npm:1.2.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 5c639e0f8da3521d605f59ce5be9e094ca772bd44a4ce7322b055a6f58eeed8dda3c94cabd90c7a41fb6fa852210092008afe48f7038792fd47501f33299116a
-  languageName: node
-  linkType: hard
-
 "util-deprecate@npm:^1.0.1":
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
@@ -7653,36 +7590,6 @@ __metadata:
   version: 13.7.0
   resolution: "validator@npm:13.7.0"
   checksum: 2b83283de1222ca549a7ef57f46e8d49c6669213348db78b7045bce36a3b5843ff1e9f709ebf74574e06223461ee1f264f8cc9a26a0060a79a27de079d8286ef
-  languageName: node
-  linkType: hard
-
-"valtio@npm:^1.6.3":
-  version: 1.6.4
-  resolution: "valtio@npm:1.6.4"
-  dependencies:
-    proxy-compare: 2.3.0
-    use-sync-external-store: 1.2.0
-  peerDependencies:
-    "@babel/helper-module-imports": ">=7.12"
-    "@babel/types": ">=7.13"
-    aslemammad-vite-plugin-macro: ">=1.0.0-alpha.1"
-    babel-plugin-macros: ">=3.0"
-    react: ">=16.8"
-    vite: ">=2.8.6"
-  peerDependenciesMeta:
-    "@babel/helper-module-imports":
-      optional: true
-    "@babel/types":
-      optional: true
-    aslemammad-vite-plugin-macro:
-      optional: true
-    babel-plugin-macros:
-      optional: true
-    react:
-      optional: true
-    vite:
-      optional: true
-  checksum: 26dcf24ad4eae2e9f88d6e27d6bf4cba15a9385d4018cde47ae8a444bd08b8bbefc141212026729eaefbaf6d06d00e87a59fafb4514f25fe8b4d3ddf0d6161cd
   languageName: node
   linkType: hard
 

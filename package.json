@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@big-whale-labs/constants": "^0.1.22",
-    "@big-whale-labs/stores": "^0.1.16",
     "@koa/cors": "^3.4.1",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",

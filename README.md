@@ -1,6 +1,6 @@
 # Metadata Generator code
 
-This repistory is used to be metadata generator for derivatives on selcred.xyz
+This repository is used to be a metadata generator for derivatives on sealcred.xyz
 
 ## Installation and local launch
 

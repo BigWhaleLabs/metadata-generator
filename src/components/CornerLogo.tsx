@@ -1,4 +1,3 @@
-import React from 'react'
 import SCLogo from '@/components/icons/SCLogo'
 import SealCredLogoText from '@/components/icons/SealCredLogoText'
 

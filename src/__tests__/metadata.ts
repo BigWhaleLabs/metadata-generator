@@ -40,18 +40,12 @@ describe('Metadata endpoint', () => {
     const response = await request(server).get(
       `/metadata/${tokenAddress}/${tokenId}`
     )
-    const contract = new ethers.Contract(
-      tokenAddress,
-      abiForName,
-      goerliProvider
-    )
+    const contract = getContract(tokenAddress, goerliProvider)
     const name = await contract.name()
 
     const badge = await getBadge(tokenAddress)
 
-    if (!badge) {
-      throw new Error('No badge')
-    }
+    if (!badge) throw new Error('No badge')
 
     const originalName = await getOriginalContractName(badge)
 

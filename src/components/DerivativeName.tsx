@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function ({ derivativeName }: { derivativeName: string }) {
   return (
     <span

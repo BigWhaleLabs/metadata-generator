@@ -1,7 +1,6 @@
 import CornertLogo from '@/components/CornerLogo'
 import DerivativeName from '@/components/DerivativeName'
 import QRCodeWrapper from '@/components/QRCodeWrapper'
-import React from 'react'
 
 export default function ({ derivativeName }: { derivativeName: string }) {
   return (

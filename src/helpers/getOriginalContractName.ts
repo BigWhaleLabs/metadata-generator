@@ -5,15 +5,13 @@ import data from '@/data'
 import getContract from '@/helpers/getContract'
 
 export default function (badge: Badge) {
-  if (badge.type === 'Email') {
-    return badge.original
-  } else {
-    const originalContract = getContract(
-      badge.original,
-      data[badge.type].network === Network.Mainnet
-        ? mainnetProvider
-        : goerliProvider
-    )
-    return originalContract.name()
-  }
+  if (badge.type === 'Email') return badge.original
+
+  const originalContract = getContract(
+    badge.original,
+    data[badge.type].network === Network.Mainnet
+      ? mainnetProvider
+      : goerliProvider
+  )
+  return originalContract.name()
 }

@@ -1,9 +1,7 @@
 import { Context } from 'koa'
 import { Controller, Ctx, Get, Params } from 'amala'
-import { ethers } from 'ethers'
 import { goerliProvider } from '@/helpers/providers'
 import Metadata from '@/validators/Metadata'
-import abiForName from '@/helpers/contracts/abiForName'
 import data from '@/data'
 import env from '@/helpers/env'
 import getBadge from '@/helpers/getBadge'
@@ -18,11 +16,7 @@ export default class LoginController {
   async image(@Ctx() ctx: Context, @Params() params: Metadata) {
     const { tokenAddress, tokenId } = params
 
-    const contract = new ethers.Contract(
-      tokenAddress,
-      abiForName,
-      goerliProvider
-    )
+    const contract = getContract(tokenAddress, goerliProvider)
     const name = await contract.name()
     const html = renderReact(tokenAddress, tokenId, name)
     const image = await nodeHtmlToImage({
@@ -39,9 +33,7 @@ export default class LoginController {
     const contract = getContract(tokenAddress, goerliProvider)
     const name = await contract.name()
     const badge = await getBadge(tokenAddress)
-    if (!badge) {
-      throw new Error('Badge not found')
-    }
+    if (!badge) throw new Error('Badge not found')
 
     const originalName = await getOriginalContractName(badge)
 

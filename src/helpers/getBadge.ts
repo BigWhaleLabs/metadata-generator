@@ -1,4 +1,4 @@
-import data from '@/data'
+import { DataKey } from '@/models/DataKey'
 import ledgers from '@/helpers/ledgers'
 
 export default async function (tokenAddress: string) {
@@ -6,7 +6,7 @@ export default async function (tokenAddress: string) {
     for (const original of Object.keys(ledger)) {
       if (ledger[original].derivative === tokenAddress)
         return {
-          type: ledgerName as keyof typeof data,
+          type: ledgerName as DataKey,
           tokenAddress,
           original,
         }

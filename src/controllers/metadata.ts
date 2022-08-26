@@ -8,6 +8,8 @@ import abiForName from '@/helpers/contracts/abiForName'
 import data from '@/data'
 import env from '@/helpers/env'
 import getBadge from '@/helpers/getBadge'
+import getContract from '@/helpers/getContract'
+import getOriginalContractName from '@/helpers/getOriginalContractName'
 import nodeHtmlToImage from 'node-html-to-image'
 import renderReact from '@/helpers/renderReact'
 
@@ -35,29 +37,19 @@ export default class LoginController {
   async metadata(@Params() params: Metadata) {
     const { tokenAddress, tokenId } = params
 
-    const contract = new ethers.Contract(
-      tokenAddress,
-      abiForName,
-      goerliProvider
-    )
+    const contract = getContract(tokenAddress, goerliProvider)
     const name = await contract.name()
-
     const badge = await getBadge(tokenAddress)
     if (!badge) {
       throw new Error('Badge not found')
     }
-    const originalContract = new ethers.Contract(
-      badge.original,
-      abiForName,
-      data[badge.type].network === Network.Mainnet
-        ? mainnetProvider
-        : goerliProvider
-    )
+
+    const originalName = await getOriginalContractName(badge)
 
     return {
-      description: data[badge.type].ownerContent(await originalContract.name()),
-      external_url: 'https://sealcred.xyz',
-      image: `${env.METADATA_GENERATOR}/${tokenAddress}/${tokenId}`,
+      description: data[badge.type].ownerContent(originalName),
+      external_url: `https://sealcred.xyz/${tokenAddress}/${tokenId}`,
+      image: `${env.METADATA_GENERATOR}/image/${tokenAddress}/${tokenId}`,
       name,
     }
   }

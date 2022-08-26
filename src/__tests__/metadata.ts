@@ -8,7 +8,7 @@ import getBadge from '@/helpers/getBadge'
 import getContract from '@/helpers/getContract'
 import getOriginalContractName from '@/helpers/getOriginalContractName'
 import nodeHtmlToImage from 'node-html-to-image'
-import renderReact from '@/helpers/renderReact' // if installed via package and bundling with a module bundler like webpack or rollup
+import renderReact from '@/helpers/renderReact'
 import request from 'supertest'
 import runApp from '@/helpers/runApp'
 import shutdown from 'http-graceful-shutdown'

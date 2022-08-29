@@ -13,9 +13,9 @@ And you should be good to go! Feel free to fork and submit pull requests.
 
 ## Environment variables
 
-| Name                 | Description                              |
-| -------------------- | ---------------------------------------- |
-| `PORT`               | Port to run server on (defaults to 1337) |
-| `METADATA_GENERATOR` | Metadata generator server url            |
+| Name                 | Description                                                         |
+| -------------------- | ------------------------------------------------------------------- |
+| `PORT`               | Port to run server on (defaults to `1337`)                          |
+| `METADATA_GENERATOR` | Metadata generator server url (defaults to `http://localhost:1337`) |
 
 Also, please, consider looking at `.env.sample`.

@@ -1,6 +1,6 @@
 # Metadata Generator code
 
-This repository is used to be a metadata generator for derivatives on sealcred.xyz
+This repository is used to be a metadata generator for derivatives on [SealCred](https://sealc.red).
 
 ## Installation and local launch
 

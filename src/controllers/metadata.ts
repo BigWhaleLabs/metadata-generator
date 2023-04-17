@@ -29,13 +29,13 @@ export default class LoginController {
     return image
   }
 
-  @Get('/metadata/:tokenAddress/:tokenId')
+  @Get('/:tokenAddress/:tokenId')
   async metadata(@Params() params: Metadata) {
     const { tokenAddress, tokenId } = params
 
     const contract = getContract(tokenAddress, goerliProvider)
     const name = await contract.name()
-    const badge = await getBadge(tokenAddress)
+    const badge = await getBadge(tokenAddress.toLowerCase())
     if (!badge) throw new Error('Badge not found')
 
     const originalName = await getOriginalContractName(badge)

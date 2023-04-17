@@ -20,10 +20,10 @@ export default class LoginController {
     const name = await contract.name()
     const html = renderReact(tokenAddress, tokenId, name)
     const image = await nodeHtmlToImage({
+      html,
       puppeteerArgs: {
         args: ['--no-sandbox'],
       },
-      html,
     })
     ctx.type = 'image/jpeg'
     return image

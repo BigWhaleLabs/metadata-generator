@@ -13,26 +13,26 @@ export default function (
     <Badge derivativeName={derivativeName} />
   )
   const config = {
-    margin: 10,
-    width: 485,
-    height: 485,
-    data: `https://sealcred.xyz/${tokenAddress}/${tokenId}`,
-    image: QRCodeLabel,
-    type: 'canvas',
-    dotsOptions: {
-      color: '#fed823',
-      type: 'dots',
+    backgroundOptions: {
+      color: '#0d0030',
+    },
+    cornersDotOptions: {
+      type: 'dot',
     },
     cornersSquareOptions: {
       color: '#ff7bed',
       type: 'dot',
     },
-    cornersDotOptions: {
-      type: 'dot',
+    data: `https://sealcred.xyz/${tokenAddress}/${tokenId}`,
+    dotsOptions: {
+      color: '#fed823',
+      type: 'dots',
     },
-    backgroundOptions: {
-      color: '#0d0030',
-    },
+    height: 485,
+    image: QRCodeLabel,
+    margin: 10,
+    type: 'canvas',
+    width: 485,
   } as Options
   return htmlTemplate(html, config)
 }

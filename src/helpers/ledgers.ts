@@ -8,8 +8,8 @@ async function ledgers() {
 
   const records = await Promise.all(
     (Object.keys(ledgerContracts) as DataKey[]).map((name) => ({
-      name,
       ledger: getLedger(ledgerContracts[name]),
+      name,
     }))
   )
 
@@ -17,7 +17,7 @@ async function ledgers() {
     [ledger in DataKey]: SCLedger
   }
 
-  for (const { name, ledger } of Object.values(records)) {
+  for (const { ledger, name } of Object.values(records)) {
     result[name] = await ledger
   }
   return result

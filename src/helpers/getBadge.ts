@@ -6,9 +6,9 @@ export default async function (tokenAddress: string) {
     for (const original of Object.keys(ledger))
       if (ledger[original].derivative.toLowerCase() === tokenAddress)
         return {
-          type: ledgerName as DataKey,
-          tokenAddress,
           original,
+          tokenAddress,
+          type: ledgerName as DataKey,
         }
   return null
 }

@@ -5,9 +5,9 @@ export default function () {
   return (
     <div
       style={{
+        alignItems: 'center',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
       }}
     >
       <SCLogo />

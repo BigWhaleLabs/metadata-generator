@@ -15,7 +15,7 @@
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src"
   },
   "dependencies": {
-    "@big-whale-labs/constants": "^0.1.39",
+    "@big-whale-labs/constants": "^0.1.75",
     "@big-whale-labs/seal-cred-ledger-contract": "^0.2.9",
     "@koa/cors": "^4.0.0",
     "@types/react": "^18.0.25",

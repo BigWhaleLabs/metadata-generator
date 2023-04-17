@@ -694,7 +694,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@big-whale-labs/seal-cred-ledger-contract@npm:^0.2.8":
+"@big-whale-labs/seal-cred-ledger-contract@npm:^0.2.9":
   version: 0.2.9
   resolution: "@big-whale-labs/seal-cred-ledger-contract@npm:0.2.9"
   checksum: a4212cc70167fc24cb3652417ed038eff0a3a619ddd69c8de8fb565aae5da2dc4011d558affd80c775de8d3bae8011afff4760983930ad6529b7816c895731ac
@@ -5825,7 +5825,7 @@ __metadata:
   resolution: "metadata-generator@workspace:."
   dependencies:
     "@big-whale-labs/constants": ^0.1.75
-    "@big-whale-labs/seal-cred-ledger-contract": ^0.2.8
+    "@big-whale-labs/seal-cred-ledger-contract": ^0.2.9
     "@koa/cors": ^4.0.0
     "@typegoose/typegoose": ^9.13.1
     "@types/jest": ^29.2.3

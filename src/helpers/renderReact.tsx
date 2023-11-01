@@ -178,6 +178,7 @@ const postImageStyle = {
   borderRadius: 16,
   height: 256,
   marginTop: 25,
+  objectFit: 'cover' as const,
   width: 256,
 }
 
@@ -216,6 +217,12 @@ const accountNameStyle = {
   fontWeight: 700,
 }
 
+const postImageContainer = {
+  display: 'flex',
+  flexDirection: 'row' as const,
+  justifyContent: 'space-between',
+}
+
 export function renderReactKetlOG(
   text: string,
   pfpURI: string,
@@ -228,11 +235,13 @@ export function renderReactKetlOG(
     <div style={rootContainer}>
       <div style={mainContainer(!!extraText)}>
         <div style={textContainer(!!extraText)}>
-          <div style={innerTextContainer}>
-            <h1 style={headerText}>{text}</h1>
-            {extraText && (
-              <div style={extraTextStyle(postImageURI)}>{extraText}</div>
-            )}
+          <div style={postImageContainer}>
+            <div style={innerTextContainer}>
+              <h1 style={headerText}>{text}</h1>
+              {extraText && (
+                <div style={extraTextStyle(postImageURI)}>{extraText}</div>
+              )}
+            </div>
             {postImageURI && <img style={postImageStyle} src={postImageURI} />}
           </div>
           <div style={userContainer}>

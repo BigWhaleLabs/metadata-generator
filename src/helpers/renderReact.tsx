@@ -82,16 +82,14 @@ export function renderReactKetlOG(text: string, extraText?: string) {
             </h1>
             <div
               style={{
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: 3,
                 color: '#64696C',
+                display: '-webkit-box',
                 fontSize: 35,
                 fontWeight: 400,
-                height: 135,
-                lineClamp: 3,
                 maxHeight: 135,
                 overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                width: 947,
               }}
             >
               Fund manages low 10 digits. I’ve received an offer but don’t

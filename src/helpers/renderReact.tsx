@@ -118,6 +118,104 @@ export async function getAccountAttestationType(address: string) {
   }
 }
 
+const rootContainer = {
+  backgroundColor: '#3A00D6',
+  display: 'flex',
+  height: 630,
+  width: 1200,
+}
+
+const mainContainer = (extraText = false) => ({
+  backgroundColor: 'white',
+  borderRadius: 32,
+  boxShadow: '0px 4px 114px 0px rgba(234, 47, 152, 0.50)',
+  height: rootContainer.height - (extraText ? 76 : 156) * 2,
+  marginLeft: 86,
+  marginTop: extraText ? 76 : 156,
+  width: rootContainer.width - 86 * 2,
+})
+
+const textContainer = (extraText = false) => ({
+  display: 'flex',
+  flexDirection: 'column' as const,
+  fontFamily: 'Space Grotesk',
+  fontStyle: 'normal',
+  height: '100%',
+  justifyContent: 'space-between',
+  lineHeight: 'normal',
+  marginLeft: 40,
+  width: mainContainer(extraText).width - 40 * 2,
+})
+
+const innerTextContainer = {
+  display: 'flex',
+  flexDirection: 'column' as const,
+  justifyContent: 'space-between',
+}
+
+const headerText = {
+  color: '#232323',
+  display: 'flex',
+  flexDirection: 'row' as const,
+  fontSize: 49,
+  fontWeight: 700,
+  lineHeight: 'normal',
+}
+
+const extraTextStyle = (postImageURI?: string) => ({
+  WebkitBoxOrient: 'vertical' as const,
+  WebkitLineClamp: postImageURI ? 2 : 3,
+  color: '#64696C',
+  display: '-webkit-box',
+  fontSize: 35,
+  fontWeight: 400,
+  marginBottom: 25,
+  maxHeight: 135,
+  overflow: 'hidden',
+})
+
+const postImageStyle = {
+  borderRadius: 16,
+  height: 256,
+  marginTop: 25,
+  width: 256,
+}
+
+const userContainer = {
+  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'row' as const,
+  marginBottom: 40,
+}
+
+const pfpStyle = {
+  borderRadius: 999,
+  height: 88,
+  width: 88,
+}
+
+const verifiedContainer = {
+  color: '#3A00D6',
+  display: 'flex',
+  flexDirection: 'row' as const,
+  fontFamily: 'Space Grotesk',
+  fontSize: 24,
+  fontWeight: 700,
+  lineHeight: 'normal',
+}
+
+const accountTypeStyle = {
+  marginBottom: 8,
+  marginLeft: 4,
+}
+
+const accountNameStyle = {
+  color: '#BABBC0',
+  fontFamily: 'JetBrains Mono',
+  fontSize: 22,
+  fontWeight: 700,
+}
+
 export function renderReactKetlOG(
   text: string,
   pfpURI: string,
@@ -127,145 +225,24 @@ export function renderReactKetlOG(
   extraText?: string
 ) {
   const html = ReactDOMServer.renderToStaticMarkup(
-    <div>
-      <div
-        style={{
-          backgroundColor: '#3A00D6',
-          display: 'flex',
-          height: 630,
-          width: 1200,
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: 'white',
-            borderRadius: 32,
-            boxShadow: '0px 4px 114px 0px rgba(234, 47, 152, 0.50)',
-            height: extraText ? 479 : 319,
-            marginLeft: 86,
-            marginTop: extraText ? 76 : 156,
-            width: 1027,
-          }}
-        >
-          <div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                fontFamily: 'Space Grotesk',
-                fontStyle: 'normal',
-                height: '100%',
-                justifyContent: 'space-between',
-                lineHeight: 'normal',
-                marginLeft: 40,
-                width: 947,
-              }}
-            >
-              <div>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <div>
-                    <h1
-                      style={{
-                        WebkitBoxOrient: 'vertical',
-                        WebkitLineClamp: 2,
-                        color: '#232323',
-                        display: '-webkit-box',
-                        fontSize: 49,
-                        fontWeight: 700,
-                        overflow: 'hidden',
-                      }}
-                    >
-                      {text}
-                    </h1>
-                    <div
-                      style={{
-                        WebkitBoxOrient: 'vertical',
-                        WebkitLineClamp: postImageURI ? 2 : 3,
-                        color: '#64696C',
-                        display: '-webkit-box',
-                        fontSize: 35,
-                        fontWeight: 400,
-                        marginBottom: 25,
-                        maxHeight: 135,
-                        overflow: 'hidden',
-                      }}
-                    >
-                      {extraText}
-                    </div>
-                  </div>
-                  {postImageURI && (
-                    <img
-                      style={{
-                        borderRadius: 16,
-                        height: 256,
-                        marginTop: 25,
-                        width: 256,
-                      }}
-                      src={postImageURI}
-                    ></img>
-                  )}
-                </div>
+    <div style={rootContainer}>
+      <div style={mainContainer(!!extraText)}>
+        <div style={textContainer(!!extraText)}>
+          <div style={innerTextContainer}>
+            <h1 style={headerText}>{text}</h1>
+            {extraText && (
+              <div style={extraTextStyle(postImageURI)}>{extraText}</div>
+            )}
+            {postImageURI && <img style={postImageStyle} src={postImageURI} />}
+          </div>
+          <div style={userContainer}>
+            <img style={pfpStyle} src={pfpURI} />
+            <div style={{ marginLeft: 16 }}>
+              <div style={verifiedContainer}>
+                <VerifiedIcon />
+                <div style={accountTypeStyle}>{accountType}</div>
               </div>
-              <div
-                style={{
-                  alignItems: 'center',
-                  display: 'flex',
-                  flexDirection: 'row',
-                  marginBottom: 40,
-                }}
-              >
-                <img
-                  style={{
-                    borderRadius: 999,
-                    height: 88,
-                    width: 88,
-                  }}
-                  src={pfpURI}
-                />
-                <div
-                  style={{
-                    marginLeft: 16,
-                  }}
-                >
-                  <div
-                    style={{
-                      color: '#3A00D6',
-                      display: 'flex',
-                      flexDirection: 'row',
-                      fontFamily: 'Space Grotesk',
-                      fontSize: 24,
-                      fontWeight: 700,
-                      lineHeight: 'normal',
-                    }}
-                  >
-                    <VerifiedIcon />
-                    <div
-                      style={{
-                        marginBottom: 8,
-                        marginLeft: 4,
-                      }}
-                    >
-                      {accountType}
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      color: '#BABBC0',
-                      fontFamily: 'JetBrains Mono',
-                      fontSize: 22,
-                      fontWeight: 700,
-                    }}
-                  >
-                    @{nickname}
-                  </div>
-                </div>
-              </div>
+              <div style={accountNameStyle}>@{nickname}</div>
             </div>
           </div>
         </div>

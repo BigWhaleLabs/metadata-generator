@@ -16,6 +16,7 @@
     "lint": "yarn pretty && eslint --max-warnings 0 ./src/"
   },
   "dependencies": {
+    "@big-whale-labs/backend-utils": "^0.0.22",
     "@big-whale-labs/constants": "^0.2.26",
     "@big-whale-labs/obss-storage-contract": "^1.0.2",
     "@big-whale-labs/seal-cred-ledger-contract": "^0.2.9",

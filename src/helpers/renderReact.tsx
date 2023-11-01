@@ -1,7 +1,12 @@
+import { KetlAttestation__factory } from '@big-whale-labs/ketl-attestation-token'
+import { providers } from 'ethers'
 import Badge from '@/components/Badge'
 import QRCodeLabel from '@/components/icons/QRCodeLabel'
 import ReactDOMServer from 'react-dom/server'
 import Truncate from 'react-truncate'
+import VerifiedIcon from '@/components/icons/VerifiedIcon'
+import defaultMumbaiProvider from '@/helpers/defaultMumbaiProvider'
+import env from '@/helpers/env'
 import htmlTemplate from '@/helpers/htmlTemplate'
 import type { Options } from 'qr-code-styling'
 
@@ -38,9 +43,87 @@ export default function (
   return htmlTemplate(html, config)
 }
 
+export function getKetlAttestationContract(
+  signerOrProvider?: providers.Provider
+) {
+  return KetlAttestation__factory.connect(
+    env.KETL_ATTESTATION_CONTRACT,
+    signerOrProvider || defaultMumbaiProvider
+  )
+}
+
+const ketlContract = getKetlAttestationContract()
+
+export type AttestationToType<T> = Record<string, T>
+
+export enum AttestationType {
+  KetlTeam = 0,
+  YC = 1,
+  Founder = 2,
+  VC = 3,
+  TopYC = 4,
+  TopVC = 5,
+}
+
+export const sortedByPriorityAccountTypes = [
+  AttestationType.KetlTeam,
+  AttestationType.TopVC,
+  AttestationType.TopYC,
+  AttestationType.VC,
+  AttestationType.YC,
+  AttestationType.Founder,
+]
+
+export enum AccountType {
+  VC = 'VC',
+  Founder = 'Founder',
+  YC = 'YC Founder',
+  Ketl = 'ketl team',
+  TopYC = 'Top 💎 YC Founder',
+  TopVC = '1B+ AUM VC 🐳',
+  Unverified = 'Unverified',
+}
+
+export const sortedAccountTypes = [
+  AccountType.Ketl,
+  AccountType.TopVC,
+  AccountType.TopYC,
+  AccountType.VC,
+  AccountType.YC,
+  AccountType.Founder,
+  AccountType.Unverified,
+]
+
+export async function getAccountTypes(address: string) {
+  const balances = await ketlContract.balanceOfBatch(
+    Array.from({ length: sortedByPriorityAccountTypes.length }).map(
+      () => address
+    ),
+    sortedByPriorityAccountTypes
+  )
+
+  return sortedByPriorityAccountTypes.reduce<AttestationToType<boolean>>(
+    (result, type, index) => ({
+      ...result,
+      [type]: balances[index].gte(1),
+    }),
+    {}
+  )
+}
+
+export async function getAccountAttestationType(address: string) {
+  const balanceMap = await getAccountTypes(address)
+
+  for (const type of sortedByPriorityAccountTypes) {
+    if (balanceMap[type]) return type
+  }
+}
+
 export function renderReactKetlOG(
   text: string,
   pfpURI: string,
+  accountType: AccountType,
+  nickname: string,
   extraText?: string
 ) {
   const html = ReactDOMServer.renderToStaticMarkup(
@@ -57,6 +140,7 @@ export function renderReactKetlOG(
           style={{
             backgroundColor: 'white',
             borderRadius: 32,
+            boxShadow: '0px 4px 114px 0px rgba(234, 47, 152, 0.50)',
             height: 479,
             marginLeft: 86,
             marginTop: 76,
@@ -107,15 +191,60 @@ export function renderReactKetlOG(
                   {extraText}
                 </div>
               </div>
-              <img
+              <div
                 style={{
-                  borderRadius: 999,
-                  height: 88,
+                  alignItems: 'center',
+                  display: 'flex',
+                  flexDirection: 'row',
                   marginBottom: 40,
-                  width: 88,
                 }}
-                src={pfpURI}
-              ></img>
+              >
+                <img
+                  style={{
+                    borderRadius: 999,
+                    height: 88,
+                    width: 88,
+                  }}
+                  src={pfpURI}
+                />
+                <div
+                  style={{
+                    marginLeft: 16,
+                  }}
+                >
+                  <div
+                    style={{
+                      color: '#3A00D6',
+                      display: 'flex',
+                      flexDirection: 'row',
+                      fontFamily: 'Space Grotesk',
+                      fontSize: 24,
+                      fontWeight: 700,
+                      lineHeight: 'normal',
+                    }}
+                  >
+                    <VerifiedIcon />
+                    <div
+                      style={{
+                        marginBottom: 8,
+                        marginLeft: 4,
+                      }}
+                    >
+                      {accountType}
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      color: '#BABBC0',
+                      fontFamily: 'JetBrains Mono',
+                      fontSize: 22,
+                      fontWeight: 700,
+                    }}
+                  >
+                    @{nickname}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

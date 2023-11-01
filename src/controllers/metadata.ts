@@ -1,5 +1,6 @@
 import { Context } from 'koa'
 import { Controller, Ctx, Get, Params } from 'amala'
+import { generateRandomName } from '@big-whale-labs/backend-utils'
 import { goerliProvider } from '@/helpers/providers'
 import KetlMetadata from '@/validators/KetlMetadata'
 import Metadata from '@/validators/Metadata'
@@ -13,7 +14,13 @@ import getFeedsContract from '@/helpers/getFeedsContract'
 import getMetadataFromIpfs from '@/helpers/getPostMetadata'
 import getOriginalContractName from '@/helpers/getOriginalContractName'
 import nodeHtmlToImage from 'node-html-to-image'
-import renderReact, { renderReactKetlOG } from '@/helpers/renderReact'
+import renderReact, {
+  AccountType,
+  AttestationType,
+  getAccountAttestationType,
+  renderReactKetlOG,
+  sortedAccountTypes,
+} from '@/helpers/renderReact'
 
 @Controller('/')
 export default class LoginController {
@@ -64,8 +71,18 @@ export default class LoginController {
       extraText: string
       text: string
     }>(metadata)
-    console.log(text, 'text')
-    const html = renderReactKetlOG(text, pfpURI, extraText)
+    const accountType =
+      sortedAccountTypes[(await getAccountAttestationType(author)) || 0]
+    const nickname = generateRandomName(author)
+    // Convert enum to object to get the value
+
+    const html = renderReactKetlOG(
+      text,
+      pfpURI,
+      accountType,
+      nickname,
+      extraText
+    )
     console.log('html', html)
 
     const image = await nodeHtmlToImage({

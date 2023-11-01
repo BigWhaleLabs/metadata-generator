@@ -6,7 +6,7 @@ const qrCodeStyling =
 const fonts = `
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 `
 
 const creatingQR = (qrCodeConfig: Options) => `
@@ -17,14 +17,21 @@ const creatingQR = (qrCodeConfig: Options) => `
     </script>
 `
 
-export default (reactHtml: string, qrCodeConfig: Options) =>
+export default (reactHtml: string, qrCodeConfig: Options, withoutQR = false) =>
   `
     <head>
-        ${qrCodeStyling}
+        <style>
+            body {
+                width: 1200px;
+                height: 630px;
+            }
+            * {}
+        </style>
+        ${withoutQR ? '' : qrCodeStyling}
         ${fonts}
     </head>
     <body>
         ${reactHtml}
-        ${creatingQR(qrCodeConfig)}
+        ${withoutQR ? '' : creatingQR(qrCodeConfig)}
     </body>
 `

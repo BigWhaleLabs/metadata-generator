@@ -1,24 +1,66 @@
 import { Context } from 'koa'
 import { Controller, Ctx, Get, Params } from 'amala'
 import { goerliProvider } from '@/helpers/providers'
+import KetlMetadata from '@/validators/KetlMetadata'
 import Metadata from '@/validators/Metadata'
 import data from '@/data'
+import defaultMumbaiProvider from '@/helpers/defaultMumbaiProvider'
 import env from '@/helpers/env'
 import getBadge from '@/helpers/getBadge'
 import getContract from '@/helpers/getContract'
+import getFeedsContract from '@/helpers/getFeedsContract'
+import getMetadataFromIpfs from '@/helpers/getPostMetadata'
 import getOriginalContractName from '@/helpers/getOriginalContractName'
 import nodeHtmlToImage from 'node-html-to-image'
-import renderReact from '@/helpers/renderReact'
+import renderReact, { renderReactKetlOG } from '@/helpers/renderReact'
 
 @Controller('/')
 export default class LoginController {
   @Get('/image/:tokenAddress/:tokenId')
   async image(@Ctx() ctx: Context, @Params() params: Metadata) {
-    const { tokenAddress, tokenId } = params
+    // const { tokenAddress, tokenId } = params
+    // const contract = getContract(tokenAddress, goerliProvider)
+    // const name = await contract.name()
+    // const html = renderReact(tokenAddress, tokenId, name)
+    // const image = await nodeHtmlToImage({
+    //   html,
+    //   puppeteerArgs: {
+    //     args: ['--no-sandbox'],
+    //   },
+    // })
+    // ctx.type = 'image/jpeg'
+    // return image
+  }
 
-    const contract = getContract(tokenAddress, goerliProvider)
-    const name = await contract.name()
-    const html = renderReact(tokenAddress, tokenId, name)
+  @Get('/:tokenAddress/:tokenId')
+  async metadata(@Params() params: Metadata) {
+    // const { tokenAddress, tokenId } = params
+    // const contract = getContract(tokenAddress, goerliProvider)
+    // const name = await contract.name()
+    // const badge = await getBadge(tokenAddress.toLowerCase())
+    // if (!badge) throw new Error('Badge not found')
+    // const originalName = await getOriginalContractName(badge)
+    // return {
+    //   description: data[badge.type].ownerContent(originalName),
+    //   external_url: `https://sealcred.xyz/${tokenAddress}/${tokenId}`,
+    //   image: `${env.METADATA_GENERATOR}/image/${tokenAddress}/${tokenId}`,
+    //   name,
+    // }
+  }
+  @Get('/ketl/:feedId/:postId')
+  async ketlMetadata(@Ctx() ctx: Context, @Params() params: KetlMetadata) {
+    const { feedId, postId } = params
+    const feedsContract = getFeedsContract(defaultMumbaiProvider)
+    const { metadata } = await feedsContract.posts(feedId, postId)
+    console.log('metadata', metadata)
+    const { extraText, text } = await getMetadataFromIpfs<{
+      extraText: string
+      text: string
+    }>(metadata)
+    console.log(text, 'text')
+    const html = renderReactKetlOG(text, extraText)
+    console.log('html', html)
+
     const image = await nodeHtmlToImage({
       html,
       puppeteerArgs: {
@@ -26,25 +68,7 @@ export default class LoginController {
       },
     })
     ctx.type = 'image/jpeg'
+
     return image
-  }
-
-  @Get('/:tokenAddress/:tokenId')
-  async metadata(@Params() params: Metadata) {
-    const { tokenAddress, tokenId } = params
-
-    const contract = getContract(tokenAddress, goerliProvider)
-    const name = await contract.name()
-    const badge = await getBadge(tokenAddress.toLowerCase())
-    if (!badge) throw new Error('Badge not found')
-
-    const originalName = await getOriginalContractName(badge)
-
-    return {
-      description: data[badge.type].ownerContent(originalName),
-      external_url: `https://sealcred.xyz/${tokenAddress}/${tokenId}`,
-      image: `${env.METADATA_GENERATOR}/image/${tokenAddress}/${tokenId}`,
-      name,
-    }
   }
 }

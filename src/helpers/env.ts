@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv'
 import {
+  KETL_PFP_GENERATOR,
   PROD_KETL_FEEDS_CONTRACT_ADDRESS,
   PROD_KETL_OBSS_CONTRACT_ADDRESS,
 } from '@big-whale-labs/constants'
@@ -17,5 +18,6 @@ export default cleanEnv(process.env, {
   OBSS_STORAGE_CONTRACT_FEEDS: str({
     default: PROD_KETL_FEEDS_CONTRACT_ADDRESS,
   }),
+  PFP_GENERATOR_URL: str({ default: KETL_PFP_GENERATOR }),
   PORT: num({ default: 1337 }),
 })

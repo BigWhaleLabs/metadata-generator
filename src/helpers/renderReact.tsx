@@ -38,7 +38,11 @@ export default function (
   return htmlTemplate(html, config)
 }
 
-export function renderReactKetlOG(text: string, extraText?: string) {
+export function renderReactKetlOG(
+  text: string,
+  pfpURI: string,
+  extraText?: string
+) {
   const html = ReactDOMServer.renderToStaticMarkup(
     <div>
       <div
@@ -46,7 +50,6 @@ export function renderReactKetlOG(text: string, extraText?: string) {
           backgroundColor: '#3A00D6',
           display: 'flex',
           height: 630,
-          position: 'absolute',
           width: 1200,
         }}
       >
@@ -60,43 +63,59 @@ export function renderReactKetlOG(text: string, extraText?: string) {
             width: 1027,
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              fontFamily: 'Space Grotesk',
-              fontStyle: 'normal',
-              lineHeight: 'normal',
-              marginLeft: 40,
-              width: 947,
-            }}
-          >
-            <h1
-              style={{
-                WebkitBoxOrient: 'vertical',
-                WebkitLineClamp: 2,
-                color: '#232323',
-                display: '-webkit-box',
-                fontSize: 49,
-                fontWeight: 700,
-                overflow: 'hidden',
-              }}
-            >
-              {text}
-            </h1>
+          <div>
             <div
               style={{
-                WebkitBoxOrient: 'vertical',
-                WebkitLineClamp: 3,
-                color: '#64696C',
-                display: '-webkit-box',
-                fontSize: 35,
-                fontWeight: 400,
-                maxHeight: 135,
-                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                fontFamily: 'Space Grotesk',
+                fontStyle: 'normal',
+                height: '100%',
+                justifyContent: 'space-between',
+                lineHeight: 'normal',
+                marginLeft: 40,
+                width: 947,
               }}
             >
-              {extraText}
+              <div>
+                <h1
+                  style={{
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 2,
+                    color: '#232323',
+                    display: '-webkit-box',
+                    fontSize: 49,
+                    fontWeight: 700,
+                    overflow: 'hidden',
+                  }}
+                >
+                  {text}
+                </h1>
+                <div
+                  style={{
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 3,
+                    color: '#64696C',
+                    display: '-webkit-box',
+                    fontSize: 35,
+                    fontWeight: 400,
+                    marginBottom: 25,
+                    maxHeight: 135,
+                    overflow: 'hidden',
+                  }}
+                >
+                  {extraText}
+                </div>
+              </div>
+              <img
+                style={{
+                  borderRadius: 999,
+                  height: 88,
+                  marginBottom: 40,
+                  width: 88,
+                }}
+                src={pfpURI}
+              ></img>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Controller, Ctx, Get, Params } from 'amala'
 import { goerliProvider } from '@/helpers/providers'
 import KetlMetadata from '@/validators/KetlMetadata'
 import Metadata from '@/validators/Metadata'
+import axios from 'axios'
 import data from '@/data'
 import defaultMumbaiProvider from '@/helpers/defaultMumbaiProvider'
 import env from '@/helpers/env'
@@ -51,14 +52,20 @@ export default class LoginController {
   async ketlMetadata(@Ctx() ctx: Context, @Params() params: KetlMetadata) {
     const { feedId, postId } = params
     const feedsContract = getFeedsContract(defaultMumbaiProvider)
-    const { metadata } = await feedsContract.posts(feedId, postId)
-    console.log('metadata', metadata)
+    const { author, metadata } = await feedsContract.posts(feedId, postId)
+    const { cid } = (
+      await axios.post(`${env.PFP_GENERATOR_URL}/profile`, {
+        address: author,
+      })
+    ).data
+    const pfpURI = `${env.IPFS_GATEWAY}/${cid}`
+    console.log(pfpURI, 'pfpURI')
     const { extraText, text } = await getMetadataFromIpfs<{
       extraText: string
       text: string
     }>(metadata)
     console.log(text, 'text')
-    const html = renderReactKetlOG(text, extraText)
+    const html = renderReactKetlOG(text, pfpURI, extraText)
     console.log('html', html)
 
     const image = await nodeHtmlToImage({

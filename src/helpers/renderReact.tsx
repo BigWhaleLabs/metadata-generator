@@ -73,12 +73,17 @@ export function renderReactKetlOG(text: string, extraText?: string) {
           >
             <h1
               style={{
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: 2,
                 color: '#232323',
+                display: '-webkit-box',
                 fontSize: 49,
                 fontWeight: 700,
+                overflow: 'hidden',
               }}
             >
-              What’s reasonable cash/carry for a quant at a PE/VC fund?
+              What’s reasonable cash/carry for a quant at a PE/VC fund? alos,
+              this is looooong
             </h1>
             <div
               style={{

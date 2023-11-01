@@ -8,19 +8,16 @@ import axios from 'axios'
 import data from '@/data'
 import defaultMumbaiProvider from '@/helpers/defaultMumbaiProvider'
 import env from '@/helpers/env'
+import getAccountAttestationType, {
+  sortedAccountTypes,
+} from '@/helpers/getAccountAttestationType'
 import getBadge from '@/helpers/getBadge'
 import getContract from '@/helpers/getContract'
 import getFeedsContract from '@/helpers/getFeedsContract'
 import getMetadataFromIpfs from '@/helpers/getPostMetadata'
 import getOriginalContractName from '@/helpers/getOriginalContractName'
 import nodeHtmlToImage from 'node-html-to-image'
-import renderReact, {
-  AccountType,
-  AttestationType,
-  getAccountAttestationType,
-  renderReactKetlOG,
-  sortedAccountTypes,
-} from '@/helpers/renderReact'
+import renderReact, { renderReactKetlOG } from '@/helpers/renderReact'
 
 @Controller('/')
 export default class LoginController {
@@ -78,7 +75,6 @@ export default class LoginController {
     const accountType =
       sortedAccountTypes[(await getAccountAttestationType(author)) || 0]
     const nickname = generateRandomName(author)
-    // Convert enum to object to get the value
 
     const html = renderReactKetlOG(
       text,

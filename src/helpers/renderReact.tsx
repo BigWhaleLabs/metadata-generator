@@ -3,7 +3,6 @@ import { providers } from 'ethers'
 import Badge from '@/components/Badge'
 import QRCodeLabel from '@/components/icons/QRCodeLabel'
 import ReactDOMServer from 'react-dom/server'
-import Truncate from 'react-truncate'
 import VerifiedIcon from '@/components/icons/VerifiedIcon'
 import defaultMumbaiProvider from '@/helpers/defaultMumbaiProvider'
 import env from '@/helpers/env'
@@ -142,9 +141,9 @@ export function renderReactKetlOG(
             backgroundColor: 'white',
             borderRadius: 32,
             boxShadow: '0px 4px 114px 0px rgba(234, 47, 152, 0.50)',
-            height: 479,
+            height: extraText ? 479 : 319,
             marginLeft: 86,
-            marginTop: 76,
+            marginTop: extraText ? 76 : 156,
             width: 1027,
           }}
         >
@@ -187,7 +186,7 @@ export function renderReactKetlOG(
                     <div
                       style={{
                         WebkitBoxOrient: 'vertical',
-                        WebkitLineClamp: 3,
+                        WebkitLineClamp: postImageURI ? 2 : 3,
                         color: '#64696C',
                         display: '-webkit-box',
                         fontSize: 35,

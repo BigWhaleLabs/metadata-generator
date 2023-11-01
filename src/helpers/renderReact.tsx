@@ -124,6 +124,7 @@ export function renderReactKetlOG(
   pfpURI: string,
   accountType: AccountType,
   nickname: string,
+  postImageURI?: string,
   extraText?: string
 ) {
   const html = ReactDOMServer.renderToStaticMarkup(
@@ -162,33 +163,54 @@ export function renderReactKetlOG(
               }}
             >
               <div>
-                <h1
-                  style={{
-                    WebkitBoxOrient: 'vertical',
-                    WebkitLineClamp: 2,
-                    color: '#232323',
-                    display: '-webkit-box',
-                    fontSize: 49,
-                    fontWeight: 700,
-                    overflow: 'hidden',
-                  }}
-                >
-                  {text}
-                </h1>
                 <div
                   style={{
-                    WebkitBoxOrient: 'vertical',
-                    WebkitLineClamp: 3,
-                    color: '#64696C',
-                    display: '-webkit-box',
-                    fontSize: 35,
-                    fontWeight: 400,
-                    marginBottom: 25,
-                    maxHeight: 135,
-                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
                   }}
                 >
-                  {extraText}
+                  <div>
+                    <h1
+                      style={{
+                        WebkitBoxOrient: 'vertical',
+                        WebkitLineClamp: 2,
+                        color: '#232323',
+                        display: '-webkit-box',
+                        fontSize: 49,
+                        fontWeight: 700,
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {text}
+                    </h1>
+                    <div
+                      style={{
+                        WebkitBoxOrient: 'vertical',
+                        WebkitLineClamp: 3,
+                        color: '#64696C',
+                        display: '-webkit-box',
+                        fontSize: 35,
+                        fontWeight: 400,
+                        marginBottom: 25,
+                        maxHeight: 135,
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {extraText}
+                    </div>
+                  </div>
+                  {postImageURI && (
+                    <img
+                      style={{
+                        borderRadius: 16,
+                        height: 256,
+                        marginTop: 25,
+                        width: 256,
+                      }}
+                      src={postImageURI}
+                    ></img>
+                  )}
                 </div>
               </div>
               <div

@@ -66,11 +66,15 @@ export default class LoginController {
       })
     ).data
     const pfpURI = `${env.IPFS_GATEWAY}/${cid}`
-    console.log(pfpURI, 'pfpURI')
-    const { extraText, text } = await getMetadataFromIpfs<{
+    const { extraText, text, ...restMetadata } = await getMetadataFromIpfs<{
       extraText: string
       text: string
+      image?: string
     }>(metadata)
+    const postImageURI = restMetadata.image
+      ? restMetadata.image.replace('ipfs://', `${env.IPFS_GATEWAY}/`)
+      : undefined
+
     const accountType =
       sortedAccountTypes[(await getAccountAttestationType(author)) || 0]
     const nickname = generateRandomName(author)
@@ -81,9 +85,9 @@ export default class LoginController {
       pfpURI,
       accountType,
       nickname,
+      postImageURI,
       extraText
     )
-    console.log('html', html)
 
     const image = await nodeHtmlToImage({
       html,

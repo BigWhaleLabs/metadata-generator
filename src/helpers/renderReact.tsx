@@ -82,8 +82,7 @@ export function renderReactKetlOG(text: string, extraText?: string) {
                 overflow: 'hidden',
               }}
             >
-              What’s reasonable cash/carry for a quant at a PE/VC fund? alos,
-              this is looooong
+              {text}
             </h1>
             <div
               style={{
@@ -97,11 +96,7 @@ export function renderReactKetlOG(text: string, extraText?: string) {
                 overflow: 'hidden',
               }}
             >
-              Fund manages low 10 digits. I’ve received an offer but don’t
-              really know how to evaluate it or compare it to a quant role
-              within a quant fund (like citadel or js). What if theres blah blah
-              lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sedsbdsfgsjhdfghjsdgfjhsdgfjhgsdhjfgsdhjgfhjsdgfhgdshjfgsdhjfgsdjhfgjdshgfhdsgfjhsdsdsjh
+              {extraText}
             </div>
           </div>
         </div>

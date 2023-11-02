@@ -1,15 +1,12 @@
-import {
-  ETH_NETWORK,
-  ETH_RPC,
-  ETH_RPC_MAINNET,
-} from '@big-whale-labs/constants'
+import { ETH_NETWORK } from '@big-whale-labs/constants'
 import { providers } from 'ethers'
+import env from '@/helpers/env'
 
 export const goerliProvider = new providers.JsonRpcProvider(
-  ETH_RPC,
+  env.GOERLI_RPC,
   ETH_NETWORK
 )
 export const mainnetProvider = new providers.JsonRpcProvider(
-  ETH_RPC_MAINNET,
+  env.MAINNET_RPC,
   'mainnet'
 )

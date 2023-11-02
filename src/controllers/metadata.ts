@@ -24,6 +24,7 @@ export default class LoginController {
   @Get('/image/:tokenAddress/:tokenId')
   async image(@Ctx() ctx: Context, @Params() params: Metadata) {
     const { tokenAddress, tokenId } = params
+
     const contract = getContract(tokenAddress, goerliProvider)
     const name = await contract.name()
     const html = renderReact(tokenAddress, tokenId, name)
@@ -40,11 +41,14 @@ export default class LoginController {
   @Get('/:tokenAddress/:tokenId')
   async metadata(@Params() params: Metadata) {
     const { tokenAddress, tokenId } = params
+
     const contract = getContract(tokenAddress, goerliProvider)
     const name = await contract.name()
     const badge = await getBadge(tokenAddress.toLowerCase())
     if (!badge) throw new Error('Badge not found')
+
     const originalName = await getOriginalContractName(badge)
+
     return {
       description: data[badge.type].ownerContent(originalName),
       external_url: `https://sealcred.xyz/${tokenAddress}/${tokenId}`,

@@ -21,14 +21,18 @@ const creatingQR = (qrCodeConfig: Options) => `
 export default (reactHtml: string, qrCodeConfig: Options, withoutQR = false) =>
   `
     <head>
+        ${
+          withoutQR
+            ? `
         <style>
             body {
                 width: 1200px;
                 height: 630px;
             }
-            * {}
         </style>
-        ${withoutQR ? '' : qrCodeStyling}
+        `
+            : qrCodeStyling
+        }
         ${fonts}
     </head>
     <body>

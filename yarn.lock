@@ -2310,15 +2310,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-truncate@npm:^2.3.6":
-  version: 2.3.6
-  resolution: "@types/react-truncate@npm:2.3.6"
-  dependencies:
-    "@types/react": "*"
-  checksum: ec6dba6c05c863ebdb57177892d682acccb23849718abfd7a4b74f4523fadb7786f6610a286547d319f6f4954424eef1595ca76cb18d667fb23dcfb117cd6e46
-  languageName: node
-  linkType: hard
-
 "@types/react@npm:*":
   version: 18.0.17
   resolution: "@types/react@npm:18.0.17"
@@ -7209,7 +7200,6 @@ __metadata:
     "@types/node": ^18.11.9
     "@types/react": ^18.0.25
     "@types/react-dom": ^18.0.9
-    "@types/react-truncate": ^2.3.6
     "@types/supertest": ^2.0.12
     amala: ^8.0.2
     axios: ^1.2.0
@@ -7230,9 +7220,7 @@ __metadata:
     prop-types: ^15.8.1
     qr-code-styling: ^1.6.0-rc.1
     react: ^18.2.0
-    react-clamp-lines: ^3.0.3
     react-dom: ^18.2.0
-    react-truncate: ^2.4.0
     source-map-support: ^0.5.21
     supertest: ^6.3.1
     ts-jest: ^29.0.3
@@ -8109,7 +8097,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -8290,17 +8278,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-clamp-lines@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "react-clamp-lines@npm:3.0.3"
-  dependencies:
-    prop-types: ^15.7.2
-  peerDependencies:
-    react: ^15 || ^16 || ^17 || ^18
-  checksum: ff84d666c8b7b02ecfdaaee9f3c08feba4e691762dd7691013b8aba37d7bbfb6847493d05ee55cee8487461fba81e6566a8c68323a4fa599f8ce5c531646e091
-  languageName: node
-  linkType: hard
-
 "react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
@@ -8354,16 +8331,6 @@ __metadata:
     react: "*"
     react-native: ">=0.71.0"
   checksum: 47b227c74cef0c9630ce7e91fe2153bcf2492f3fae175352818ca2278779f28c2932611df44cb8a18cb290da6d73aa3a927bcea56c3a9a4a51db6a7f4f72ac4d
-  languageName: node
-  linkType: hard
-
-"react-truncate@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "react-truncate@npm:2.4.0"
-  peerDependencies:
-    prop-types: <= 15.x.x
-    react: <= 16.x.x
-  checksum: fecd5b39115845c1bd36364ebe0a46b475d62f53df4d7a65fb5b3aa322bdd766d18025d50dcfb253fd7ff31cfdff81179c1ca56adccdc5db638c787800989652
   languageName: node
   linkType: hard
 

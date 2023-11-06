@@ -11,9 +11,9 @@ export default function VerifiedIcon() {
       <path
         d="M9.73938 16.2665L14.3894 21.0357L23.0251 12.1786"
         stroke="white"
-        stroke-width="4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )

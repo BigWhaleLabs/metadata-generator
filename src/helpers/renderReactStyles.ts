@@ -1,8 +1,24 @@
 export const rootContainer = {
   backgroundColor: '#3A00D6',
   display: 'flex',
+  flexDirection: 'column' as const,
   height: 630,
   width: 1200,
+}
+
+export const logoContainer = {
+  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'column' as const,
+  justifyContent: 'center',
+  marginBottom: 24,
+  width: '100%',
+}
+
+export const logoSpace = {
+  display: 'flex',
+  minHeight: 27,
+  width: '100%',
 }
 
 export const mainContainer = (extraText = false) => ({

@@ -5,6 +5,8 @@ import {
   extraTextStyle,
   headerText,
   innerTextContainer,
+  logoContainer,
+  logoSpace,
   mainContainer,
   pfpStyle,
   postImageContainer,
@@ -19,6 +21,7 @@ import QRCodeLabel from '@/components/icons/QRCodeLabel'
 import ReactDOMServer from 'react-dom/server'
 import VerifiedIcon from '@/components/icons/VerifiedIcon'
 
+import KetlLogo from '@/components/icons/KetlLogo'
 import htmlTemplate from '@/helpers/htmlTemplate'
 import type { Options } from 'qr-code-styling'
 
@@ -87,6 +90,10 @@ export function renderReactKetlOG(
             </div>
           </div>
         </div>
+      </div>
+      <div style={logoContainer}>
+        <div style={logoSpace} />
+        <KetlLogo />
       </div>
     </div>
   )

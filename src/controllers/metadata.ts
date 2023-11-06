@@ -18,6 +18,7 @@ import getMetadataFromIpfs from '@/helpers/getPostMetadata'
 import getOriginalContractName from '@/helpers/getOriginalContractName'
 import nodeHtmlToImage from 'node-html-to-image'
 import renderReact, { renderReactKetlOG } from '@/helpers/renderReact'
+import truncateString from '@/helpers/truncateString'
 
 @Controller('/')
 export default class LoginController {
@@ -97,6 +98,19 @@ export default class LoginController {
     })
     ctx.type = 'image/jpeg'
 
+    console.log('Someone request a ketl metadata for ', feedId, postId)
+
     return image
+  }
+
+  @Get('/ketl/post/:feedId/:postId')
+  async ketlPostData(@Ctx() ctx: Context, @Params() params: KetlMetadata) {
+    const { feedId, postId } = params
+    const feedsContract = getFeedsContract(defaultMumbaiProvider)
+    const { author, metadata } = await feedsContract.posts(feedId, postId)
+    const { text } = await getMetadataFromIpfs<{ text: string }>(metadata)
+    const nickname = generateRandomName(author)
+
+    return `${nickname} said, ${truncateString(text, 70)}`
   }
 }

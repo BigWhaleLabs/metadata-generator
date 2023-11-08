@@ -114,6 +114,7 @@ export const accountNameStyle = {
 }
 
 export const postImageContainer = {
+  columnGap: 24,
   display: 'flex',
   flexDirection: 'row' as const,
   justifyContent: 'space-between',

@@ -21,15 +21,15 @@ export enum AccountType {
   Unverified = 'Unverified',
 }
 
-export const sortedAccountTypes = [
-  AccountType.Ketl,
-  AccountType.TopVC,
-  AccountType.TopYC,
-  AccountType.VC,
-  AccountType.YC,
-  AccountType.Founder,
-  AccountType.Unverified,
-]
+export const sortedAccountTypes = {
+  [AttestationType.KetlTeam]: AccountType.Ketl,
+  [AttestationType.TopVC]: AccountType.TopVC,
+  [AttestationType.TopYC]: AccountType.TopYC,
+  [AttestationType.VC]: AccountType.VC,
+  [AttestationType.YC]: AccountType.YC,
+  [AttestationType.Founder]: AccountType.Founder,
+  [-1]: AccountType.Unverified,
+}
 
 export const sortedByPriorityAccountTypes = [
   AttestationType.KetlTeam,

@@ -77,7 +77,7 @@ export default class LoginController {
       : undefined
 
     const accountType =
-      sortedAccountTypes[(await getAccountAttestationType(author)) || 0]
+      sortedAccountTypes[(await getAccountAttestationType(author)) || -1]
     const nickname = generateRandomName(author)
 
     const html = renderReactKetlOG(

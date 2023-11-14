@@ -18,5 +18,6 @@ And you should be good to go! Feel free to fork and submit pull requests.
 | -------------------- | ------------------------------------------------------------------- |
 | `PORT`               | Port to run server on (defaults to `1337`)                          |
 | `METADATA_GENERATOR` | Metadata generator server url (defaults to `http://localhost:1337`) |
+| `MUMBAI_RPC`         | Your Mumbai RPC                                                     |
 
 Also, please, consider looking at `.env.sample`.

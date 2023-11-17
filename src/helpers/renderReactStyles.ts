@@ -46,7 +46,7 @@ export const textContainer = (extraText = false) => ({
 export const innerTextContainer = {
   display: 'flex',
   flexDirection: 'column' as const,
-  justifyContent: 'space-between',
+  justifyContent: 'justify-start',
 }
 
 export const headerText = {

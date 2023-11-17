@@ -50,12 +50,14 @@ export const innerTextContainer = {
 }
 
 export const headerText = {
+  WebkitBoxOrient: 'vertical' as const,
+  WebkitLineClamp: 2,
   color: '#232323',
-  display: 'flex',
-  flexDirection: 'row' as const,
+  display: '-webkit-box',
   fontSize: 49,
   fontWeight: 700,
   lineHeight: 'normal',
+  overflow: 'hidden',
 }
 
 export const extraTextStyle = (postImageURI?: string) => ({

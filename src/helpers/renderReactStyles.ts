@@ -46,21 +46,23 @@ export const textContainer = (extraText = false) => ({
 export const innerTextContainer = {
   display: 'flex',
   flexDirection: 'column' as const,
-  justifyContent: 'space-between',
+  justifyContent: 'justify-start',
 }
 
 export const headerText = {
+  WebkitBoxOrient: 'vertical' as const,
+  WebkitLineClamp: 2,
   color: '#232323',
-  display: 'flex',
-  flexDirection: 'row' as const,
+  display: '-webkit-box',
   fontSize: 49,
   fontWeight: 700,
   lineHeight: 'normal',
+  overflow: 'hidden',
 }
 
-export const extraTextStyle = (postImageURI?: string) => ({
+export const extraTextStyle = {
   WebkitBoxOrient: 'vertical' as const,
-  WebkitLineClamp: postImageURI ? 2 : 3,
+  WebkitLineClamp: 2,
   color: '#64696C',
   display: '-webkit-box',
   fontSize: 35,
@@ -68,7 +70,7 @@ export const extraTextStyle = (postImageURI?: string) => ({
   marginBottom: 25,
   maxHeight: 135,
   overflow: 'hidden',
-})
+}
 
 export const postImageStyle = {
   borderRadius: 16,

@@ -76,8 +76,10 @@ export default class LoginController {
       ? restMetadata.image.replace('ipfs://', `${env.IPFS_GATEWAY}/`)
       : undefined
 
+    const attestationType = await getAccountAttestationType(author)
+
     const accountType =
-      sortedAccountTypes[(await getAccountAttestationType(author)) || -1]
+      sortedAccountTypes[attestationType === undefined ? -1 : attestationType]
     const nickname = generateRandomName(author)
 
     const html = renderReactKetlOG(

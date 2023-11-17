@@ -73,9 +73,7 @@ export function renderReactKetlOG(
           <div style={postImageContainer}>
             <div style={innerTextContainer}>
               <h1 style={headerText}>{text}</h1>
-              {extraText && (
-                <div style={extraTextStyle(postImageURI)}>{extraText}</div>
-              )}
+              {extraText && <div style={extraTextStyle}>{extraText}</div>}
             </div>
             {postImageURI && <img style={postImageStyle} src={postImageURI} />}
           </div>

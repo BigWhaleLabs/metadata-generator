@@ -4,6 +4,7 @@ export const rootContainer = {
   flexDirection: 'column' as const,
   height: 630,
   width: 1200,
+  wordBreak: 'break-word' as const,
 }
 
 export const logoContainer = {
